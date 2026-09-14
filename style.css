@@ -3,6 +3,162 @@
    style.css - Part 1 (P2a)
 ====================================== */
 
+
+/* ==============================
+   LIVE SCROLL EXPERIENCE
+============================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Scroll progress bar */
+
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: var(--primary);
+    z-index: 9999;
+    transition: width 0.05s linear;
+}
+
+/* Reveal animations */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Different reveal directions */
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-70px);
+    transition: .9s ease;
+}
+
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(70px);
+    transition: .9s ease;
+}
+
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Hero floating card */
+
+.hero-card {
+    animation: floatingCard 4s ease-in-out infinite;
+}
+
+@keyframes floatingCard {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+}
+
+/* Cards */
+
+.card,
+.project,
+.about-card,
+.info-box {
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+}
+
+.card:hover,
+.project:hover,
+.about-card:hover,
+.info-box:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(0,0,0,.14);
+}
+
+/* Buttons */
+
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,.2);
+    transform: translate(-50%,-50%);
+    transition: width .5s, height .5s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Section spacing */
+
+section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated background glow */
+
+section::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(37,99,235,.06);
+    filter: blur(60px);
+    top: 10%;
+    left: -150px;
+    pointer-events: none;
+}
+
+/* Active navigation */
+
+nav a.active {
+    color: var(--primary);
+}
+
+/* Header when scrolling */
+
+header.scrolled {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.12);
+}
 *{
     margin:0;
     padding:0;
